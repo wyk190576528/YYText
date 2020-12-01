@@ -447,7 +447,7 @@ YYTextAttributeType YYTextAttributeGetType(NSString *name){
     if (font == (id)[NSNull null] || font == nil) {
         ((NSMutableDictionary *)_attributes)[(id)kCTFontAttributeName] = [NSNull null];
     } else {
-        CTFontRef ctFont = CTFontCreateWithName((__bridge CFStringRef)font.fontName, font.pointSize, NULL);
+        CTFontRef ctFont = CTFontCreateWithFontDescriptor((__bridge CTFontDescriptorRef)font.fontDescriptor, font.pointSize, nil);
         if (ctFont) {
             ((NSMutableDictionary *)_attributes)[(id)kCTFontAttributeName] = (__bridge id)(ctFont);
             CFRelease(ctFont);
